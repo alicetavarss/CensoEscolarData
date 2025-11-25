@@ -1,5 +1,16 @@
+-- Garante que as tabelas antigas sejam removidas antes de criar as novas
+DROP TABLE IF EXISTS tb_usuario;
 DROP TABLE IF EXISTS escolas;
 
+-- 1. Criação da Tabela de Usuários (tb_usuario)
+CREATE TABLE tb_usuario (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cpf TEXT UNIQUE NOT NULL,       -- CPF deve ser único para cada usuário
+    nascimento DATE NOT NULL
+);
+
+-- 2. Criação da Tabela de Escolas (mantida como solicitado)
 CREATE TABLE escolas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     CO_ENTIDADE INTEGER,
