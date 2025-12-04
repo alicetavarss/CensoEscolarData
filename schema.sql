@@ -1,16 +1,45 @@
-DROP TABLE IF EXISTS escolas;
+-- schema.sql (SQL puro)
+-- Criado com base no modelo Microdado atualizado.
 
-CREATE TABLE escolas (
+DROP TABLE IF EXISTS microdados_censo;
+
+CREATE TABLE microdados_censo (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    CO_ENTIDADE INTEGER,
-    NO_ENTIDADE TEXT,
-    CO_UF INTEGER,
-    CO_MUNICIPIO INTEGER,
-    QT_MAT_BAS INTEGER,
-    QT_MAT_INF INTEGER,
-    QT_MAT_FUND INTEGER,
-    QT_MAT_MED INTEGER,
-    QT_MAT_PROF INTEGER,
-    QT_MAT_EJA INTEGER,
-    QT_MAT_ESP INTEGER
+    
+    -- Identificação da IE
+    co_entidade VARCHAR(10) NOT NULL,
+    no_entidade VARCHAR(255) NOT NULL,
+    nu_ano_censo INTEGER NOT NULL,
+    
+    -- Colunas Geográficas
+    co_regiao INTEGER,
+    no_regiao VARCHAR(50),
+    co_uf INTEGER,
+    sg_uf VARCHAR(2),
+    no_uf VARCHAR(50),
+    co_municipio INTEGER,
+    no_municipio VARCHAR(255),
+    co_mesorregiao INTEGER,
+    no_mesorregiao VARCHAR(255),
+    co_microrregiao INTEGER,
+    no_microrregiao VARCHAR(255),
+    
+    -- Colunas de Matrículas
+    qt_mat_bas INTEGER,
+    qt_mat_prof INTEGER,
+    qt_mat_eja INTEGER,
+    qt_mat_esp INTEGER,
+    qt_mat_fund INTEGER,
+    qt_mat_inf INTEGER,
+    qt_mat_med INTEGER,
+    qt_mat_zr_na INTEGER,
+    qt_mat_zr_rur INTEGER,
+    qt_mat_zr_urb INTEGER,
+    
+    -- Campo Calculado para Ranking
+    qt_mat_total INTEGER
 );
+
+CREATE INDEX idx_co_entidade ON microdados_censo (co_entidade);
+CREATE INDEX idx_nu_ano_censo ON microdados_censo (nu_ano_censo);
+CREATE INDEX idx_qt_mat_total ON microdados_censo (qt_mat_total);
