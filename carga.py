@@ -1,5 +1,3 @@
-# carga.py
-
 import os
 import pandas as pd
 from app import create_app # Importa a função de criação do app

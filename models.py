@@ -1,6 +1,8 @@
+
+
 from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+db = SQLAlchemy() 
 
 class Microdado(db.Model):
     __tablename__ = 'microdados_censo'

@@ -1,17 +1,14 @@
--- schema.sql (SQL puro)
--- Criado com base no modelo Microdado atualizado.
+
 
 DROP TABLE IF EXISTS microdados_censo;
 
 CREATE TABLE microdados_censo (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     
-    -- Identificação da IE
     co_entidade VARCHAR(10) NOT NULL,
     no_entidade VARCHAR(255) NOT NULL,
     nu_ano_censo INTEGER NOT NULL,
     
-    -- Colunas Geográficas
     co_regiao INTEGER,
     no_regiao VARCHAR(50),
     co_uf INTEGER,
@@ -24,7 +21,6 @@ CREATE TABLE microdados_censo (
     co_microrregiao INTEGER,
     no_microrregiao VARCHAR(255),
     
-    -- Colunas de Matrículas
     qt_mat_bas INTEGER,
     qt_mat_prof INTEGER,
     qt_mat_eja INTEGER,
@@ -36,7 +32,6 @@ CREATE TABLE microdados_censo (
     qt_mat_zr_rur INTEGER,
     qt_mat_zr_urb INTEGER,
     
-    -- Campo Calculado para Ranking
     qt_mat_total INTEGER
 );
 
